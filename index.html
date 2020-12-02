@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <style>
+        h3{
+            color: purple;
+        }
+    </style>
 </head>
 <body>
     <h3>Hello World</h3>
 
     <!-- This is the custom HTML tag for our custom element. -->
     <!-- Passing an attribute -->
-    <user-card name="John Doe"></user-card>
-    <user-card name="Steven Smith"></user-card>
+    <user-card name="John Doe" avatar="https://randomuser.me/api/portraits/men/1.jpg">
+        <div slot="email">keshavs@gmail.com</div>
+        <div slot="phone">1111155555</div>
+    </user-card>
+    <user-card name="Ellyse Perry" avatar="https://randomuser.me/api/portraits/women/2.jpg"></user-card>
 
     <script src="userCard.js"></script> 
 </body>
