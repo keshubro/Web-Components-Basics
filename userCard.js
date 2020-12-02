@@ -46,6 +46,7 @@ class UserCard extends HTMLElement
     constructor()
     {
         super(); //Calls the cosntructor of HTMLElement
+        this.showInfo = true;
 
         this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
@@ -53,6 +54,38 @@ class UserCard extends HTMLElement
         this.shadowRoot.querySelector('img').src = this.getAttribute('avatar');
         
     }
+
+    toggleInfo()
+    {
+        this.showInfo = !this.showInfo;
+        const info = this.shadowRoot.querySelector('.info');
+        const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
+
+        if(this.showInfo)
+        {
+            info.style.display = 'block';
+            toggleBtn.innerText = "Hide Info";
+        }
+        else
+        {
+            info.style.display = 'none';
+            toggleBtn.innerText = "Show Info";
+        }
+    }
+
+    //called when element is inserted into the DOM
+    connectedCallback()
+    {
+        this.shadowRoot.querySelector('#toggle-info').addEventListener('click', () => this.toggleInfo());
+    }
+
+    //Called when element is removed from the DOM
+    disconnectedCallback()
+    {
+        this.shadowRoot.querySelector('#toggle-info').removeEventListener();
+    }
+
+
 }
 
 ///Define custom element
